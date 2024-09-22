@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Courier New', monospace;
     margin: 0;
@@ -299,4 +300,74 @@ footer li:hover {
 
 .light-mode footer h2 {
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #game-board {
+        max-width: 300px;
+        gap: 5px;
+    }
+
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    footer div {
+        width: 300px;
+        height: auto;
+    }
+
+    footer h2 {
+        font-size: 1.2rem;
+    }
+
+    footer ul {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #game-board {
+        max-width: 200px;
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer div {
+        width: 100%;
+    }
+
+    footer ul {
+        font-size: 0.8rem;
+    }
 }
