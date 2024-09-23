@@ -1,6 +1,11 @@
+Sure! Here’s the complete README file in a single copy-ready message:
+
+```
 # Tic Tac Toe - Cyberpunk Edition
 
 Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you to play Tic Tac Toe against an AI or a friend. It features a dynamic dark/light mode and utilizes various technologies for a seamless gaming experience.
+
+[Live Demo](https://tictactoe-ai-chammy.vercel.app/)
 
 ## Features
 
@@ -22,37 +27,43 @@ Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you 
 
 1. Clone this repository to your local machine:
    
+   ```bash
    git clone https://github.com/chaman2003/tictactoe-ai
-   
+   ```
 
 2. Navigate to the project directory:
    
+   ```bash
    cd tic-tac-toe-cyberpunk-edition
-   
+   ```
 
 3. Create a virtual environment:
    
+   ```bash
    python -m venv venv
-   
+   ```
 
 4. Activate the virtual environment:
    - On Windows:
-    
+     ```bash
      venv\Scripts\activate
-    
+     ```
    - On macOS/Linux:
-    
+     ```bash
      source venv/bin/activate
-    
+     ```
+
 5. Install the required packages:
    
+   ```bash
    pip install -r requirements.txt
-   
+   ```
 
 6. Run the Flask application:
    
+   ```bash
    python app.py
-   
+   ```
 
 7. Open your web browser and go to `http://127.0.0.1:5000`.
 
@@ -73,3 +84,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Author
 
 Made with ❤️ by Chammy
+```
+
