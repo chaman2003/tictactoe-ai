@@ -2,8 +2,9 @@
 
 Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you to play Tic Tac Toe against an AI or a friend. It features a dynamic dark/light mode and utilizes various technologies for a seamless gaming experience.
 
-## Video Demo https://youtu.be/RUVBONqDwYU
 ## Live Website Demo https://tictactoe-ai-chammy.vercel.app/
+
+## Video Demo https://youtu.be/RUVBONqDwYU
 
 ### Description:
 
