@@ -1,6 +1,5 @@
-Sure! Here’s the complete README file in a single copy-ready message:
 
-```
+
 # Tic Tac Toe - Cyberpunk Edition
 
 Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you to play Tic Tac Toe against an AI or a friend. It features a dynamic dark/light mode and utilizes various technologies for a seamless gaming experience.
@@ -29,7 +28,7 @@ Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you 
    
    ```bash
    git clone https://github.com/chaman2003/tictactoe-ai
-   ```
+   
 
 2. Navigate to the project directory:
    
