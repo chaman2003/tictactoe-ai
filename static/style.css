@@ -53,10 +53,10 @@ button:hover {
 }
 #game-board {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr); /* Keep the same number of columns */
+    grid-template-rows: repeat(3, 1fr); /* Keep the same number of rows */
     gap: 5px;
-    max-width: 450px; 
+    max-width: 450px; /* Increase max width */
     margin: 40px auto;
     padding: 20px;
     background-color: #000;
@@ -66,8 +66,8 @@ button:hover {
 }
 
 .cell {
-    width: 120px;
-    height: 120px; 
+    width: 120px; /* Increase the size of each cell */
+    height: 120px; /* Increase the size of each cell */
     background-color: #333;
     border: 3px solid #ff66cc;
     display: flex;
@@ -363,7 +363,8 @@ footer li:hover {
     }
 
     footer div {
-        width: 100%;
+        width: 85%;
+        margin: 3%;
     }
 
     footer ul {
