@@ -55,7 +55,7 @@ button:hover {
     grid-template-columns: repeat(3, 1fr); 
     grid-template-rows: repeat(3, 1fr); 
     gap: 5px;
-    max-width: 450px; 
+    max-width: 395px; 
     margin: 40px auto;
     padding: 20px;
     background-color: #000;
@@ -65,7 +65,7 @@ button:hover {
 }
 
 .cell {
-    width: 120px;
+    width: 120px; 
     height: 120px; 
     background-color: #333;
     border: 3px solid #ff66cc;
@@ -76,7 +76,6 @@ button:hover {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     border-radius: 8px;
-    
 }
 
 .cell:hover {
@@ -300,50 +299,14 @@ footer li:hover {
 .light-mode footer h2 {
     background-color: rgba(255, 255, 255, 0.8);
 }
-
 @media screen and (max-width: 768px) {
     h1 {
         font-size: 2rem;
     }
 
     #game-board {
-        max-width: 300px;
+        max-width: 350px;
         gap: 5px;
-    }
-
-    .cell {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
-    }
-
-    button {
-        font-size: 1rem;
-        padding: 8px 15px;
-    }
-
-    footer div {
-        width: 300px;
-        height: auto;
-    }
-
-    footer h2 {
-        font-size: 1.2rem;
-    }
-
-    footer ul {
-        font-size: 0.9rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    #game-board {
-        max-width: 400px;
     }
 
     .cell {
@@ -364,6 +327,10 @@ footer li:hover {
     footer div {
         width: 85%;
         margin: 3%;
+    }
+
+    footer h2 {
+        font-size: 1.2rem;
     }
 
     footer ul {
