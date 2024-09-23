@@ -1,5 +1,3 @@
-
-
 # Tic Tac Toe - Cyberpunk Edition
 
 Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you to play Tic Tac Toe against an AI or a friend. It features a dynamic dark/light mode and utilizes various technologies for a seamless gaming experience.
@@ -83,5 +81,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Author
 
 Made with ❤️ by Chammy
-```
-
