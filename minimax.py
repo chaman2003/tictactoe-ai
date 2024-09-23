@@ -1,84 +1,86 @@
+# Function to print the Tic-Tac-Toe board
 def print_board(board):
-    for row in range(0, 9, 3):
-        print(" | ".join(board[row:row+3]))
-        print("-" * 9)
+    for row in board:
+        print(" | ".join(row))  # Print each row with "|" separator
+        print("-" * 9)  # Print horizontal line after each row
 
+# Function to get a list of empty cells on the board
 def get_empty_cells(board):
-    return [i for i in range(len(board)) if board[i] == '_']
+    """Get a list of empty cells on the board."""
+    return [(i, j) for i in range(3) for j in range(3) if board[i][j] == '_']
 
 def check_winner(board):
-    wins = [(0, 1, 2), (3, 4, 5), (6, 7, 8),
-            (0, 3, 6), (1, 4, 7), (2, 5, 8),
-            (0, 4, 8), (2, 4, 6)]
-    
-    for a, b, c in wins:
-        if board[a] == board[b] == board[c] != '_':
-            return board[a]
+    """Check if there's a winner on the board."""
+    for line in get_all_lines(board):
+        if line[0] == line[1] == line[2] and line[0] != '_':
+            return line[0]
     return None
 
-def minimax(board, is_maximizing):
-    winner = check_winner(board)
-    if winner == 'X': return 1
-    if winner == 'O': return -1
-    if '_' not in board: return 0
+def get_all_lines(board):
+    """Get all rows, columns, and diagonals on the board."""
+    lines = []
+    lines.extend(board)
+    for j in range(3):
+        lines.append([board[i][j] for i in range(3)])
+    lines.append([board[i][i] for i in range(3)])
+    lines.append([board[i][2 - i] for i in range(3)])
+    return lines
 
+def player_move(board, name):
+    """Function for the player to make a move."""
+    move_row = input("Enter your move (row): ")
+    move_col = input("Enter your move (column): ")
+    try:
+        row, col = int(move_row) - 1, int(move_col) - 1
+        if not (0 <= row <= 2 and 0 <= col <= 2):
+            raise ValueError("Row and column indices must be between 1 and 3.")
+        if board[row][col] != '_':
+            raise ValueError("That cell is already taken. Try again.")
+        board[row][col] = 'O'
+        print_board(board)
+        return row, col
+    except ValueError as e:
+        print(e)
+        return player_move(board, name)
+
+def ai_move(board):
+    """Function for the AI to make a move."""
+    best_score = float('-inf')
+    best_move = None
+    for move in get_empty_cells(board):
+        board[move[0]][move[1]] = 'X'
+        score = minimax(board, False)
+        board[move[0]][move[1]] = '_'
+        if score > best_score:
+            best_score = score
+            best_move = move
+    board[best_move[0]][best_move[1]] = 'X'
+    print("AI's move:")
+    print_board(board)
+
+def minimax(board, is_maximizing):
+    """Implement the minimax algorithm."""
+    winner = check_winner(board)
+    if winner == 'X':
+        return 1
+    elif winner == 'O':
+        return -1
+    elif '_' not in [cell for row in board for cell in row]:
+        return 0
+    
     if is_maximizing:
-        best_score = -float('inf')
-        for i in get_empty_cells(board):
-            board[i] = 'X'
+        best_score = float('-inf')
+        for move in get_empty_cells(board):
+            board[move[0]][move[1]] = 'X'
             score = minimax(board, False)
-            board[i] = '_'
+            board[move[0]][move[1]] = '_'
             best_score = max(score, best_score)
         return best_score
     else:
         best_score = float('inf')
-        for i in get_empty_cells(board):
-            board[i] = 'O'
+        for move in get_empty_cells(board):
+            board[move[0]][move[1]] = 'O'
             score = minimax(board, True)
-            board[i] = '_'
+            board[move[0]][move[1]] = '_'
             best_score = min(score, best_score)
         return best_score
-
-def ai_move(board):
-    best_score, move = -float('inf'), None
-    for i in get_empty_cells(board):
-        board[i] = 'X'
-        score = minimax(board, False)
-        board[i] = '_'
-        if score > best_score:
-            best_score, move = score, i
-    board[move] = 'X'
-
-def player_move(board):
-    while True:
-        try:
-            move = int(input("Enter your move (1-9): ")) - 1
-            if board[move] != '_': raise ValueError("Cell taken.")
-            board[move] = 'O'
-            print_board(board)
-            return
-        except (ValueError, IndexError):
-            print("Invalid move. Try again.")
-
-def main():
-    board = ['_'] * 9
-    print("Welcome to Tic-Tac-Toe!")
-    print_board(board)
-
-    while True:
-        player_move(board)
-        if (winner := check_winner(board)):
-            print(f"{winner} wins!" if winner == 'X' else "You win!")
-            break
-        if '_' not in board:
-            print("It's a draw!")
-            break
-        ai_move(board)
-        print("AI's move:")
-        print_board(board)
-        if (winner := check_winner(board)):
-            print(f"{winner} wins!" if winner == 'X' else "You win!")
-            break
-
-if __name__ == "__main__":
-    main()
