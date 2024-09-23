@@ -1,23 +1,18 @@
-# Function to print the Tic-Tac-Toe board
 def print_board(board):
     for row in board:
-        print(" | ".join(row))  # Print each row with "|" separator
-        print("-" * 9)  # Print horizontal line after each row
+        print(" | ".join(row))
+        print("-" * 9)
 
-# Function to get a list of empty cells on the board
 def get_empty_cells(board):
-    """Get a list of empty cells on the board."""
     return [(i, j) for i in range(3) for j in range(3) if board[i][j] == '_']
 
 def check_winner(board):
-    """Check if there's a winner on the board."""
     for line in get_all_lines(board):
         if line[0] == line[1] == line[2] and line[0] != '_':
             return line[0]
     return None
 
 def get_all_lines(board):
-    """Get all rows, columns, and diagonals on the board."""
     lines = []
     lines.extend(board)
     for j in range(3):
@@ -27,7 +22,6 @@ def get_all_lines(board):
     return lines
 
 def player_move(board, name):
-    """Function for the player to make a move."""
     move_row = input("Enter your move (row): ")
     move_col = input("Enter your move (column): ")
     try:
@@ -44,7 +38,6 @@ def player_move(board, name):
         return player_move(board, name)
 
 def ai_move(board):
-    """Function for the AI to make a move."""
     best_score = float('-inf')
     best_move = None
     for move in get_empty_cells(board):
@@ -59,7 +52,6 @@ def ai_move(board):
     print_board(board)
 
 def minimax(board, is_maximizing):
-    """Implement the minimax algorithm."""
     winner = check_winner(board)
     if winner == 'X':
         return 1
