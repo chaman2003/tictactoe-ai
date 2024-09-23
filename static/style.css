@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: 'Courier New', monospace;
     margin: 0;
@@ -53,10 +52,10 @@ button:hover {
 }
 #game-board {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Keep the same number of columns */
-    grid-template-rows: repeat(3, 1fr); /* Keep the same number of rows */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(3, 1fr); 
     gap: 5px;
-    max-width: 450px; /* Increase max width */
+    max-width: 450px; 
     margin: 40px auto;
     padding: 20px;
     background-color: #000;
@@ -66,8 +65,8 @@ button:hover {
 }
 
 .cell {
-    width: 120px; /* Increase the size of each cell */
-    height: 120px; /* Increase the size of each cell */
+    width: 120px;
+    height: 120px; 
     background-color: #333;
     border: 3px solid #ff66cc;
     display: flex;
@@ -302,7 +301,6 @@ footer li:hover {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -372,5 +370,3 @@ footer li:hover {
         font-size: 0.8rem;
     }
 }
-
-
