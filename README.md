@@ -1,6 +1,6 @@
-# Tic Tac Toe - Cyberpunk Edition
+# Tic Tac Toe Ai- Cyberpunk Theme
 
-Welcome to the Tic Tac Toe - Cyberpunk Edition! This web application allows you to play Tic Tac Toe against an AI or a friend. It features a dynamic dark/light mode and utilizes various technologies for a seamless gaming experience.
+Welcome to the Tic Tac Toe - Cyberpunk Theme! This web application allows you to play Tic Tac Toe against an AI or a friend. It features a dynamic dark/light mode and utilizes various technologies for a seamless gaming experience.
 
 ## Live Website Demo https://tictactoe-ai-chammy.vercel.app/
 
