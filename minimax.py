@@ -1,6 +1,6 @@
 def ai_move(board):
-    best_move = None
     best_score = float('-inf')
+    best_move = None
 
     for move in get_empty_cells(board):
         board[move[0]][move[1]] = 'X'
@@ -14,6 +14,7 @@ def ai_move(board):
     if best_move is not None:
         board[best_move[0]][best_move[1]] = 'X'
         return best_move
+    return None
 
 def minimax(board, is_maximizing):
     winner = check_winner(board)
@@ -22,7 +23,7 @@ def minimax(board, is_maximizing):
         return 1
     elif winner == 'O':
         return -1
-    elif '_' not in [cell for row in board for cell in row]:
+    elif not get_empty_cells(board):
         return 0
 
     if is_maximizing:
