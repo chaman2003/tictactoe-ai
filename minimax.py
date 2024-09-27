@@ -1,18 +1,12 @@
 def ai_move(board):
-    corners = [(0, 0), (0, 2), (2, 0), (2, 2)]
-    if any(board[row][col] == 'O' for row, col in corners):
-        if board[1][1] == '_':
-            board[1][1] = 'X'
-            return (1, 1)
-
-    best_score = float('-inf')
     best_move = None
+    best_score = float('-inf')
 
     for move in get_empty_cells(board):
         board[move[0]][move[1]] = 'X'
         score = minimax(board, False)
         board[move[0]][move[1]] = '_'
-        
+
         if score > best_score:
             best_score = score
             best_move = move
@@ -23,7 +17,7 @@ def ai_move(board):
 
 def minimax(board, is_maximizing):
     winner = check_winner(board)
-    
+
     if winner == 'X':
         return 1
     elif winner == 'O':
