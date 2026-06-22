@@ -54,35 +54,61 @@ function checkTie(board) {
     return board.every(cell => cell !== '');
 }
 
+function minimax(board, isMaximizing) {
+    if (checkWin(board, 'O')) return 10;
+    if (checkWin(board, 'X')) return -10;
+    if (board.every(cell => cell !== '')) return 0;
+
+    if (isMaximizing) {
+        let best = -Infinity;
+        for (let i = 0; i < 9; i++) {
+            if (board[i] === '') {
+                board[i] = 'O';
+                best = Math.max(best, minimax(board, false));
+                board[i] = '';
+            }
+        }
+        return best;
+    } else {
+        let best = Infinity;
+        for (let i = 0; i < 9; i++) {
+            if (board[i] === '') {
+                board[i] = 'X';
+                best = Math.min(best, minimax(board, true));
+                board[i] = '';
+            }
+        }
+        return best;
+    }
+}
+
 function aiMove(board) {
     let emptyCells = board.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
-    let move;
 
     if (aiDifficulty === 'easy') {
-        move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        return emptyCells[Math.floor(Math.random() * emptyCells.length)];
     } else if (aiDifficulty === 'medium') {
-        move = emptyCells.find(index => {
+        return emptyCells.find(index => {
             board[index] = 'O';
-            if (checkWin(board, 'O')) return true;
+            let win = checkWin(board, 'O');
             board[index] = '';
+            return win;
         }) || emptyCells.find(index => {
             board[index] = 'X';
-            if (checkWin(board, 'X')) return true;
+            let win = checkWin(board, 'X');
             board[index] = '';
+            return win;
         }) || emptyCells[Math.floor(Math.random() * emptyCells.length)];
     } else {
-        move = emptyCells.find(index => {
-            board[index] = 'O';
-            if (checkWin(board, 'O')) return true;
-            board[index] = '';
-        }) || emptyCells.find(index => {
-            board[index] = 'X';
-            if (checkWin(board, 'X')) return true;
-            board[index] = '';
-        }) || emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        let bestScore = -Infinity, bestMove = emptyCells[0];
+        for (let i of emptyCells) {
+            board[i] = 'O';
+            let score = minimax(board, false);
+            board[i] = '';
+            if (score > bestScore) { bestScore = score; bestMove = i; }
+        }
+        return bestMove;
     }
-
-    return move;
 }
 
 function placeMark(cell, mark) {
